@@ -1,3 +1,26 @@
+/* 7 - Cadastro de Produto
+Regras de negócio:
+●	Para cadastrar um novo produto em estoque, com os seguintes atributos:
+○	ID:
+■	Gerado automaticamente pelo sistema.
+○	Armazenamento
+■	Armazenamento deverá pré-definido e estar relacionado aos locais de armazenamento já cadastrados. 
+■	Deve-se verificar se este local de armazenamento aceita produtos do animal que está sendo cadastrado
+○	Produto
+■	Tipo do produto:
+●	Ração
+●	Antiparasitário
+●	Antipulgas
+○	Quantidade
+■	Deve-se um inteiro.
+○	Animal
+■	Cachorro
+■	Gato
+○	Categoria
+■	Filhote
+■	Adulto
+ */
+
 import React, { useState } from 'react';
 
 const ProductForm = ({ onAddProduct }) => {
