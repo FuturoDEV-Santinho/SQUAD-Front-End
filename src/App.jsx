@@ -8,7 +8,6 @@ import StockItem from './components/StockItem';
 import ProductForm from './components/ProductForm';
 import AddProductPage from './components/AddProductPage';
 import WarehouseForm from './components/WarhouseForm';
-import WarehouseEditForm from './components/WarHouseEditForm';
 
 const App = () => {
   const totalAnimals = {
@@ -35,7 +34,6 @@ const App = () => {
       <ProductForm/>
       <AddProductPage/>
       <WarehouseForm/>
-      <WarehouseEditForm/>
      
       
     </div>

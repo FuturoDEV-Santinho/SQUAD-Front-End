@@ -22,7 +22,7 @@ Regras de negócio:
  */
 
 import React, { useState } from 'react';
-import AddProductPage from './AddProductPage';
+/* import AddProductPage from './AddProductPage'; */
 
 const ProductForm = ({ onAddProduct }) => {
   const initialProduct = {
@@ -59,7 +59,7 @@ const ProductForm = ({ onAddProduct }) => {
             onChange={handleInputChange}
           />
         </label>
-        <AddProductPage/>
+     
       </div>
       <div>
         <label>
