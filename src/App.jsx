@@ -23,16 +23,21 @@ const App = () => {
 
   return (
     <div>
+      
       <h1>Cadastro de Usuário</h1>
       <UserRegistrationForm />
       <h2>Login de Usuário</h2>
       <UserLoginForm/>
       <h3>Sumário Estoque</h3>
       <StockSummary totalAnimals={totalAnimals} />
+      <h4>Lista de Estoque</h4>
       <StockList/>
+      <h5>Editar Produto no Estoque</h5>
       <StockItem/>
+      <h6>Cadastro de Produto</h6>
       <ProductForm/>
       <AddProductPage/>
+      <h7>Armazém</h7>
       <WarehouseForm/>
      
       
