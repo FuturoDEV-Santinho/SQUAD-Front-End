@@ -1,4 +1,4 @@
-
+/* PÁGINA DE ADIÇÃO DE PRODUTO */
 
 import React from 'react';
 import ProductForm from './ProductForm';
