@@ -1,15 +1,15 @@
 import React from 'react';
-import AddProductPage from '../components/Registration/AddProductPage';
+import StockManagement from '../components/StockManagement/StockManagement';
 
-const RegistrationPage = () => {
+const StockManagementPage = () => {
   // Lógica para realizar a inserção de dados e criar um novo usuário
   return (
     <div>
       <h1>Página de Cadastro</h1>
       {/* Formulário de cadastro de usuário */}
-      <AddProductPage/>
+      <StockManagement/>
     </div>
   );
 };
 
-export default RegistrationPage;
+export default StockManagementPage;

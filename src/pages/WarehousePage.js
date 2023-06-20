@@ -1,6 +1,7 @@
 import React from 'react';
-import WarHouseEditForm from '../components/Warehouse/WarHouseEditForm';
-import WarehouseForm from '../components/Warehouse/WarhouseForm';
+import CadastroArmazem from '../components/Warehouse/CadastroArmazem';
+import ListaArmazens from '../components/Warehouse/ListaArmazens';
+import EditarArmazem from '../components/Warehouse/EditarArmazem';
 
 
 
@@ -9,9 +10,9 @@ const WarehousePage = () => {
   return (
     <div>
       <h1>Página de Cadastro de Armazém</h1>
-   
-      <WarHouseEditForm/>
-      <WarHouseForm/>
+   <CadastroArmazem/>
+   <EditarArmazem/>
+   <ListaArmazens/>
 
     </div>
   );
