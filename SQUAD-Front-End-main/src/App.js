@@ -4,8 +4,9 @@ import StockManagement from './components/StockManagement/StockManagement';
 import CadastroArmazem from './components/Warehouse/CadastroArmazem';
 import ListaArmazens from './components/Warehouse/ListaArmazens';
 import EditarArmazem from './components/Warehouse/EditarArmazem';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-function App() {
+const App = () => {
   const [armazens, setArmazens] = useState([]);
   const [editandoArmazem, setEditandoArmazem] = useState(null);
 
@@ -39,44 +40,51 @@ function App() {
   };
 
   return (
-    <div>
-      <header>
-        <StockManagement/>
-      </header>
+    <Router>
       <div>
-        <CadastroArmazem onArmazemCadastrado={handleArmazemCadastrado} />
+        <header>
+          <StockManagement />
+        </header>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/armazens">Lista de Armazéns</Link>
+            </li>
+            <li>
+              <Link to="/cadastro">Cadastro de Armazém</Link>
+            </li>
+          </ul>
+        </nav>
         <hr />
-        {editandoArmazem ? (
-          <EditarArmazem armazem={editandoArmazem} onEditarConfirmado={handleEditarConfirmado} />
-        ) : (
-          <ListaArmazens
-            armazens={armazens}
-            onEditar={handleEditar}
-            onDesativar={handleDesativar}
+        <Routes>
+          <Route
+            path="/armazens"
+            element={
+              <ListaArmazens
+                armazens={armazens}
+                onEditar={handleEditar}
+                onDesativar={handleDesativar}
+              />
+            }
           />
-        )}
+          <Route
+            path="/cadastro"
+            element={<CadastroArmazem onArmazemCadastrado={handleArmazemCadastrado} />}
+          />
+        </Routes>
+        <div>
+          {editandoArmazem ? (
+            <EditarArmazem
+              armazem={editandoArmazem}
+              onEditarConfirmado={handleEditarConfirmado}
+            />
+          ) : null}
+        </div>
       </div>
-    </div>
-  );
-}
-
-export default App;
-
-
-/* import React from 'react';
-import './App.css';
-
-
-const App = () => {
-
-  return (
-    <div>
-      
-  
-    </div>
+    </Router>
   );
 };
 
-export default App; */
- 
+export default App;
+
 
