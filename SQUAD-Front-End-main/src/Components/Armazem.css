@@ -1,0 +1,21 @@
+.armazem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.lista-armazens {
+  margin-bottom: 20px;
+}
+
+.formulario-armazem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-armazem input {
+  margin-bottom: 10px;
+}
