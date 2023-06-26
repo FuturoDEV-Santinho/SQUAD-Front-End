@@ -1,5 +1,5 @@
 //CSS
-import "./CadastroUsuario.css";
+import "../Styles/CadastroUsuario.css";
 
 //REACT
 import React, { useState } from "react";

@@ -1,8 +1,11 @@
+//CSS
+import "../Styles/Menu.css";
+
+//REACT
 import React, { useState } from "react";
 import Armazem from "./Armazem";
 import Produto from "./Produto";
 import Dashboard from "./Dashboard";
-import "./Menu.css";
 
 const Menu = () => {
   const [activeComponent, setActiveComponent] = useState("armazem");

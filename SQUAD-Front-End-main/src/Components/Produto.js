@@ -1,5 +1,5 @@
 //CSS
-import "./Produto.css";
+import "../Styles/Produto.css";
 
 //REACT
 import React, { useEffect, useState } from "react";

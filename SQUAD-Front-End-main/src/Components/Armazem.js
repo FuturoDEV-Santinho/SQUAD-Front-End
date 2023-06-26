@@ -1,5 +1,8 @@
+//CSS
+import "../Styles/Armazem.css";
+
+//REACT
 import React, { useEffect, useState } from "react";
-import "./Armazem.css";
 import ArmazemEdicao from "./ArmazemEdicao";
 
 const Armazem = () => {
