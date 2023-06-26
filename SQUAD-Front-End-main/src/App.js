@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Login from "./Components/Login";
 import CadastroUsuario from "./Components/CadastroUsuario";
+import "./App.css";
 
 const App = () => {
   const [mostrarCadastro, setMostrarCadastro] = useState(false);
