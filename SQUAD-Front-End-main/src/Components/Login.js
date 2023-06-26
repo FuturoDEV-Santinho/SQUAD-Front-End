@@ -1,3 +1,7 @@
+//CSS
+import "./Login.css";
+
+//REACT
 import React, { useState } from "react";
 import Menu from "./Menu";
 import CadastroUsuario from "./CadastroUsuario";
@@ -51,24 +55,46 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </div>
-        <div>
-          <label>Senha:</label>
-          <input type="password" value={senha} onChange={handleSenhaChange} />
-        </div>
-        <button type="button" onClick={handleLogin}>
-          Entrar
-        </button>
-        <button type="button" onClick={handleCadastrar}>
-          Cadastrar
-        </button>
-      </form>
-      <p>{mensagem}</p>
+      <h2 className="login-titulo">DEV in Adotion</h2>
+
+      <div className="login-menu">
+        <h2 className="login-subtitulo">Login de Usuário</h2>
+        <form className="login-formulario">
+          <div>
+            <label>Email:</label>
+            <input
+              placeholder="Digite seu e-mail"
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <label>Senha:</label>
+            <input
+              placeholder="Digite sua senha"
+              type="password"
+              value={senha}
+              onChange={handleSenhaChange}
+            />
+          </div>
+          <button
+            className="login-btn-entrar"
+            type="button"
+            onClick={handleLogin}
+          >
+            Entrar
+          </button>
+          <button
+            className="login-btn-cadastrar"
+            type="button"
+            onClick={handleCadastrar}
+          >
+            Cadastrar
+          </button>
+        </form>
+        <p className="login-msg">{mensagem}</p>
+      </div>
     </div>
   );
 };
