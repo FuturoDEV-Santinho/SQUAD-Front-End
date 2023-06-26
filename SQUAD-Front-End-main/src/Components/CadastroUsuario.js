@@ -1,24 +1,28 @@
+//CSS
+import "./CadastroUsuario.css";
+
+//REACT
 import React, { useState } from "react";
 
-const CadastroUsuario = ({ handleRetornar }) => {
+const CadastroUsuario = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [mensagem, setMensagem] = useState("");
 
-  const handleNomeChange = (event) => {
-    setNome(event.target.value);
+  const handleNomeChange = (e) => {
+    setNome(e.target.value);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  const handleSenhaChange = (event) => {
-    setSenha(event.target.value);
+  const handleSenhaChange = (e) => {
+    setSenha(e.target.value);
   };
 
-  const handleCadastro = () => {
+  const handleCadastro = async (e) => {
+    e.preventDefault();
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,22 +34,25 @@ const CadastroUsuario = ({ handleRetornar }) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:8080/usuarios/cadastro", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        setMensagem(result);
-      })
-      .catch((error) => console.log("error", error));
-  };
-
-  const handleRetornarClick = () => {
-    handleRetornar();
+    try {
+      const res = await fetch(
+        "http://localhost:8080/usuarios/cadastro",
+        requestOptions
+      );
+      const data = await res.json();
+      if (data.status === 500) throw new Error(data.message);
+      window.location.href = "/";
+      alert("Cadastro realizado com sucesso");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
-    <div>
-      <h2>Cadastro de Usuário</h2>
-      <form>
+    <div className="cadastroUsuario">
+      <h1>Cadastro de Usuário</h1>
+
+      <form className="cadastro-form" onSubmit={handleCadastro}>
         <div>
           <label>Nome:</label>
           <input type="text" value={nome} onChange={handleNomeChange} />
@@ -58,16 +65,8 @@ const CadastroUsuario = ({ handleRetornar }) => {
           <label>Senha:</label>
           <input type="password" value={senha} onChange={handleSenhaChange} />
         </div>
-        <button type="button" onClick={handleCadastro}>
-          Cadastrar
-        </button>
+        <button type="submit">Cadastrar</button>
       </form>
-      <p>{mensagem}</p>
-      {mensagem && (
-        <button type="button" onClick={handleRetornarClick}>
-          Retornar
-        </button>
-      )}
     </div>
   );
 };
