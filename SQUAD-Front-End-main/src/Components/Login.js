@@ -1,6 +1,5 @@
 //CSS
 import "../Styles/Login.css";
-
 //REACT
 import React, { useState } from "react";
 import Menu from "./Menu";
@@ -55,13 +54,12 @@ const Login = () => {
 
   return (
     <div>
-      <h2 className="login-titulo">DEV in Adotion</h2>
-
-      <div className="login-menu">
-        <h2 className="login-subtitulo">Login de Usuário</h2>
-        <form className="login-formulario">
+      <h1>DEV in Adotion</h1>
+      <div>
+        <h2>Login de Usuário</h2>
+        <form>
           <div>
-            <label>Email:</label>
+            <label>E-mail:</label>
             <input
               placeholder="Digite seu e-mail"
               type="email"
