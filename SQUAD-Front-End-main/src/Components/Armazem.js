@@ -1,6 +1,5 @@
 //CSS
 import "../Styles/Armazem.css";
-
 //REACT
 import React, { useEffect, useState } from "react";
 import ArmazemEdicao from "./ArmazemEdicao";
