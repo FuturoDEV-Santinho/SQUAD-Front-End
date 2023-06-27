@@ -1,6 +1,5 @@
 //CSS
 import "../Styles/Menu.css";
-
 //REACT
 import React, { useState } from "react";
 import Armazem from "./Armazem";
