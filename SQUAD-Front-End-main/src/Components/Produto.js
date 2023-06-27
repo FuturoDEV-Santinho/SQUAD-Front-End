@@ -19,7 +19,7 @@ const Produto = () => {
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:8080/produto/estoque");
-      const result = await response.text();
+      const result = await response.json();
       setData(result);
     } catch (error) {
       console.log("error", error);
@@ -70,45 +70,109 @@ const Produto = () => {
         "http://localhost:8080/produto",
         requestOptions
       );
-      const result = await response.text();
-      console.log(result);
-      // Atualizar os dados do estoque após o cadastro
-      fetchData();
+
+      if (response.ok) {
+        console.log("Item cadastrado com sucesso.");
+        // Atualizar os dados do estoque após o cadastro
+        fetchData();
+      } else {
+        console.log("Erro ao cadastrar o item.");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  const handleExcluir = async (itemId) => {
+    try {
+      const requestOptions = {
+        method: "DELETE",
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        `http://localhost:8080/produto/${itemId}/estoque`,
+        requestOptions
+      );
+
+      if (response.ok) {
+        console.log("Item excluído com sucesso.");
+        // Atualizar os dados do estoque após a exclusão
+        fetchData();
+      } else {
+        console.log("Erro ao excluir o item.");
+      }
     } catch (error) {
       console.log("error", error);
     }
   };
 
   return (
-    <div className="produto">
-      <div className="lista-de-produto">
-        <h1>Estoque de itens</h1>
+    <div>
+      <div>
+        <h1>Estoque</h1>
         {data ? (
-          <div>
-            <pre>{data}</pre>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Armazém</th>
+                <th>Tipo de Animal</th>
+                <th>Tipo de Produto</th>
+                <th>Quantidade</th>
+                <th>Categoria</th>
+                <th>Ações</th> {/* Coluna para o botão de exclusão */}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.nomeArmazem}</td>
+                  <td>{item.tipoAnimal}</td>
+                  <td>{item.tipoProduto}</td>
+                  <td>{item.quantidade}</td>
+                  <td>{item.categoria}</td>
+                  <td>
+                    <button onClick={() => handleExcluir(item.id)}>
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : (
-          <p>Carregando dados...</p>
+          <p>Nenhum item cadastrado.</p>
         )}
       </div>
 
-      <div className="cadastro-de-produto">
-        <h1>Adicionar Item no Estoque</h1>
-
+      <div>
+        <h1>Cadastro de novo item</h1>
         <form>
           <div>
             <label>Categoria:</label>
-            <select value={categoria} onChange={handleCategoriaChange}>
-              <option value="">Selecione</option>
-              <option value="FILHOTE">Filhote</option>
-              <option value="ADULTO">Adulto</option>
-            </select>
+            <input
+              type="radio"
+              name="categoria"
+              value="FILHOTE"
+              checked={categoria === "FILHOTE"}
+              onChange={handleCategoriaChange}
+            />{" "}
+            Filhote
+            <input
+              type="radio"
+              name="categoria"
+              value="ADULTO"
+              checked={categoria === "ADULTO"}
+              onChange={handleCategoriaChange}
+            />{" "}
+            Adulto
           </div>
 
           <div>
             <label>Nome do Armazém:</label>
             <input
               type="text"
+              placeholder="Informe o Armazém"
               value={nomeArmazem}
               onChange={handleNomeArmazemChange}
             />
@@ -117,7 +181,10 @@ const Produto = () => {
           <div>
             <label>Quantidade:</label>
             <input
-              type="text"
+              type="number"
+              min="0"
+              max="100"
+              placeholder="Quantidade"
               value={quantidade}
               onChange={handleQuantidadeChange}
             />
@@ -125,11 +192,22 @@ const Produto = () => {
 
           <div>
             <label>Tipo de Animal:</label>
-            <select value={tipoAnimal} onChange={handleTipoAnimalChange}>
-              <option value="">Selecione</option>
-              <option value="GATO">Gato</option>
-              <option value="CACHORRO">cachorro</option>
-            </select>
+            <input
+              type="radio"
+              name="tipoAnimal"
+              value="GATO"
+              checked={tipoAnimal === "GATO"}
+              onChange={handleTipoAnimalChange}
+            />{" "}
+            Gato
+            <input
+              type="radio"
+              name="tipoAnimal"
+              value="CACHORRO"
+              checked={tipoAnimal === "CACHORRO"}
+              onChange={handleTipoAnimalChange}
+            />{" "}
+            Cachorro
           </div>
 
           <div>
