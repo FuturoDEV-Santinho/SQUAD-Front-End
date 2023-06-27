@@ -1,6 +1,5 @@
 //CSS
 import "../Styles/Dashboard.css";
-
 //REACT
 import React, { useEffect, useState } from "react";
 
@@ -8,7 +7,6 @@ function formatApiResponse(responseData) {
   try {
     const data = JSON.parse(responseData);
 
-    // Formatar os dados conforme necessário
     let formattedData = "";
 
     for (let animal in data) {
@@ -56,7 +54,11 @@ const Dashboard = () => {
     <div className="Dashboard">
       <div className="lista-do-dashboard">
         <h1>Dashboard</h1>
-        <p>{formattedResponse}</p>
+        {formattedResponse ? (
+          <p>{formattedResponse}</p>
+        ) : (
+          <p>Nenhum dado a ser mostrado.</p>
+        )}
       </div>
     </div>
   );
