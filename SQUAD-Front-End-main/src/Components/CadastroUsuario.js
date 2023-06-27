@@ -58,7 +58,7 @@ const CadastroUsuario = () => {
           <input type="text" value={nome} onChange={handleNomeChange} />
         </div>
         <div>
-          <label>Email:</label>
+          <label>E-mail:</label>
           <input type="email" value={email} onChange={handleEmailChange} />
         </div>
         <div>
